@@ -229,14 +229,6 @@ function transposeMatrix(matrixToTranspose) {
   return transposedMatrix
 }
 
-const tm = [
-  [1, 2, 3, 4, 5],
-  [1, 20, 3, 4, 5],
-  [1, 20, 3, 4, 5],
-  [1, 20, 3, 4, 5],
-  [1, 4, 3, 4, 5]
-]
-
 function greatestProduct(matrixToTest) {
   let greatestGreatestLineProduct = 0
   for (let i = 0; i < matrixToTest.length; i++) {
@@ -260,7 +252,32 @@ function greatestProduct(matrixToTest) {
   }
 }
 
-console.log(greatestProduct(matrix))
+//Bonus - Iteration #8.1: Product of diagonals
+//with another approach
+function greatestProductOfDiagonals(matrixToTest) {
+  let greatestPartialProductOfDiagonals = 0
+  let partialProductOfDiagonalRight = 0
+  let partialProductOfDiagonalLeft = 0
+
+  for (let i = 0; i < matrixToTest.length - 3; i++) {
+    for (let j = 0; j < matrixToTest.length - 3; j++) {
+      partialProductOfDiagonalRight =
+        matrixToTest[i][j] * matrixToTest[i + 1][j + 1] * matrixToTest[i + 2][j + 2] * matrixToTest[i + 3][j + 3]
+      partialProductOfDiagonalLeft =
+        matrixToTest[i][j + 3] * matrixToTest[i + 1][j + 2] * matrixToTest[i + 2][j + 1] * matrixToTest[i + 3][j]
+      if (partialProductOfDiagonalRight > greatestPartialProductOfDiagonals) {
+        greatestPartialProductOfDiagonals = partialProductOfDiagonalRight
+      }
+      if (partialProductOfDiagonalLeft > greatestPartialProductOfDiagonals) {
+        greatestPartialProductOfDiagonals = partialProductOfDiagonalLeft
+      }
+    }
+  }
+
+  return greatestPartialProductOfDiagonals
+}
+
+console.log('greatestProductOfDiagonals', greatestProductOfDiagonals(matrix))
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
