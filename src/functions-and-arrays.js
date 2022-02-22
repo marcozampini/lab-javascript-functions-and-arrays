@@ -1,41 +1,110 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
-
-
+function maxOfTwoNumbers(number1, number2) {
+  if (number1 >= number2) {
+    return number1
+  } else {
+    return number2
+  }
+}
 
 // Iteration #2: Find longest word
-const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot']
 
-function findLongestWord() {}
-
-
+function findLongestWord(wordsArray) {
+  if (wordsArray.length == 0) {
+    return null
+  }
+  if (wordsArray.length == 1) {
+    return wordsArray[0]
+  }
+  let longestWord = ''
+  let longestLength = 0
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i].length > longestLength) {
+      longestLength = wordsArray[i].length
+      longestWord = wordsArray[i]
+    }
+  }
+  return longestWord
+}
 
 // Iteration #3: Calculate the sum
-const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
+const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10]
 
-function sumNumbers() {}
-
-
+function sumNumbers(numbersArray) {
+  if (numbersArray.length == 0) {
+    return 0
+  }
+  if (numbersArray.length == 1) {
+    return numbersArray[0]
+  }
+  let partialSum = 0
+  for (let i = 0; i < numbersArray.length; i++) {
+    partialSum += numbersArray[i]
+  }
+  return partialSum
+}
 
 // Iteration #3.1 Bonus:
-function sum() {}
-
-
+function sum(genericArray) {
+  if (genericArray.length == 0) {
+    return 0
+  }
+  if (genericArray.length == 1) {
+    return genericArray[0]
+  }
+  let partialSum = 0
+  for (let i = 0; i < genericArray.length; i++) {
+    if (typeof genericArray[i] === 'string') {
+      partialSum += genericArray[i].length
+    } else if (typeof genericArray[i] === 'boolean') {
+      if (genericArray[i] === true) {
+        partialSum++
+      }
+    } else if (typeof genericArray[i] === 'object' || typeof genericArray[i] === 'array') {
+      throw "Unsupported data type sir or ma'am"
+    } else {
+      partialSum += genericArray[i]
+    }
+  }
+  return partialSum
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
-const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9]
 
-function averageNumbers() {}
-
+function averageNumbers(numbersArray) {
+  if (numbersArray.length == 0) {
+    return null
+  }
+  if (numbersArray.length == 1) {
+    return numbersArray[0]
+  }
+  return sumNumbers(numbersArray) / numbersArray.length
+}
 
 // Level 2: Array of strings
-const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace']
 
-function averageWordLength() { }
+function averageWordLength(wordsArray) {
+  if (wordsArray.length == 0) {
+    return null
+  }
+  let partialSum = 0
+  for (let i = 0; i < wordsArray.length; i++) {
+    partialSum += wordsArray[i].length
+  }
+  return partialSum / wordsArray.length
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(mixedArray) {
+  if (mixedArray.length == 0) {
+    return null
+  }
+  return Math.round((sum(mixedArray) / mixedArray.length) * 100) / 100
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -50,18 +119,37 @@ const wordsUnique = [
   'communion',
   'simple',
   'bring'
-];
+]
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(arrayToBeUniquified) {
+  if (arrayToBeUniquified.length == 0) {
+    return null
+  }
+  let uniquifiedArray = []
+  for (let i = 0; i < arrayToBeUniquified.length; i++) {
+    if (uniquifiedArray.includes(arrayToBeUniquified[i])) {
+      continue
+    } else {
+      uniquifiedArray.push(arrayToBeUniquified[i])
+    }
+  }
+  return uniquifiedArray
+}
 
 // Iteration #6: Find elements
-const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience']
 
-function doesWordExist() {}
-
-
+function doesWordExist(wordsArray, wordToSearch) {
+  if (wordsArray.length == 0) {
+    return null
+  }
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === wordToSearch) {
+      return true
+    }
+  }
+  return false
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -76,11 +164,20 @@ const wordsCount = [
   'truth',
   'disobedience',
   'matter'
-];
+]
 
-function howManyTimes() {}
-
-
+function howManyTimes(wordsArray, wordToSearch) {
+  if (wordsArray.length == 0) {
+    return 0
+  }
+  let countTimes = 0
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === wordToSearch) {
+      countTimes++
+    }
+  }
+  return countTimes
+}
 
 // Iteration #8: Bonus
 const matrix = [
@@ -104,12 +201,66 @@ const matrix = [
   [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16],
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
-];
+]
 
-function greatestProduct() {}
+function greatestLineProduct(arrayToTest) {
+  let greatestPartialLineProduct = 0
+  let partialLineProduct = 0
+  for (let i = 0; i < arrayToTest.length - 3; i++) {
+    partialLineProduct = arrayToTest[i] * arrayToTest[i + 1] * arrayToTest[i + 2] * arrayToTest[i + 3]
 
+    if (partialLineProduct > greatestPartialLineProduct) {
+      greatestPartialLineProduct = partialLineProduct
+    }
+  }
 
+  return greatestPartialLineProduct
+}
 
+function transposeMatrix(matrixToTranspose) {
+  const transposedMatrix = []
+
+  for (let i = 0; i < matrixToTranspose[0].length; i++) {
+    transposedMatrix.push([])
+    for (let j = 0; j < matrixToTranspose.length; j++) {
+      transposedMatrix[i].push(matrixToTranspose[j][i])
+    }
+  }
+  return transposedMatrix
+}
+
+const tm = [
+  [1, 2, 3, 4, 5],
+  [1, 20, 3, 4, 5],
+  [1, 20, 3, 4, 5],
+  [1, 20, 3, 4, 5],
+  [1, 4, 3, 4, 5]
+]
+
+function greatestProduct(matrixToTest) {
+  let greatestGreatestLineProduct = 0
+  for (let i = 0; i < matrixToTest.length; i++) {
+    if (greatestLineProduct(matrixToTest[i]) > greatestGreatestLineProduct) {
+      greatestGreatestLineProduct = greatestLineProduct(matrixToTest[i])
+    }
+  }
+  console.log('greatestGreatestLineProduct', greatestGreatestLineProduct)
+  let greatestGreatestColumnProduct = 0
+  const transposedMatrix = transposeMatrix(matrixToTest)
+  for (let j = 0; j < transposedMatrix.length; j++) {
+    if (greatestLineProduct(transposedMatrix[j]) > greatestGreatestColumnProduct) {
+      greatestGreatestColumnProduct = greatestLineProduct(transposedMatrix[j])
+    }
+  }
+  console.log('greatestGreatestColumnProduct', greatestGreatestColumnProduct)
+  if (greatestGreatestLineProduct >= greatestGreatestColumnProduct) {
+    return greatestGreatestLineProduct
+  } else {
+    return greatestGreatestColumnProduct
+  }
+}
+
+console.log(greatestProduct(matrix))
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
@@ -126,5 +277,5 @@ if (typeof module !== 'undefined') {
     doesWordExist,
     howManyTimes,
     greatestProduct
-  };
+  }
 }

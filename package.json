@@ -33,6 +33,8 @@
   "prettier": {
     "printWidth": 120,
     "singleQuote": true,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "editor.formatOnSave": true,
+    "semi": false
   }
 }
